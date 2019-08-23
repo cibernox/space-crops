@@ -1,58 +1,74 @@
-# emberfest-deck
+# Ember in orbit. Building apps for outer space connectivity
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+## Ideas para la app que usarán los astronautas
 
-## Prerequisites
+App para monitorear el crecimiento de plantas en el espacio:
+  1. Hay varias especies: Tomates, patatas, cebollas.
+  2. De la tierra reciben datos de tiempo/intensidad de luz, cantidad de agua y cantidad de abono que deben dar a cada muestra
+  3. A la tierra envian reportes de tamaño, floración y producción obtenida periodicamente.
 
-You will need the following things properly installed on your computer.
+Al principio todo es sincrono.
+  - La app tarda mucho en cargar la homescreen. Al añadir service workers se arregla.
+  - Las transiciones tardan mucho cuando hay requests. Al añadir non-blocking UI se arregla.
+  - Cuando no hay conexión no se pueden leer datos de la API. Al añadir indexeddb como cache se arregla.
+  - Cuando no hay conexión no se pueden salvar datos a la API. Añadiendo una estrategia adecuada se arregla.
+  - Cuando algo va mal todo se fastidia. Al añadir estrategia para manejar errores se arregla.
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/)
-* [Yarn](https://yarnpkg.com/)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
 
-## Installation
+### Slice 0
 
-* `git clone <repository-url>` this repository
-* `cd emberfest-deck`
-* `yarn install`
+Title & presentation
 
-## Running / Development
+### Slide 1
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+Ember & offline. Explain how most of the presents have heard about PWA and offline apps. Those apps
+are supposed to work offline.
 
-### Code Generators
+In past conferences (Emberconf / Emberfest / Embercamp) other people have touched the topic...
 
-Make use of the many generators for code, try `ember help generate` for more details
+### Slide 2
 
-### Running Tests
+The answer is Service Workers!
+Today adding service workers to an Ember app is dead easy. At Dockyard we built and maintain an addon for this: `ember-service-workers`
 
-* `ember test`
-* `ember test --server`
 
-### Linting
+### Slide 3
 
-* `yarn lint:hbs`
-* `yarn lint:js`
-* `yarn lint:js --fix`
+Steps to make an app load offline:
+1. `ember install ember-service-worker ember-service-worker-asset-cache ember-service-worker-cache-first ember-service-worker-index`
+2.
+```js
+  let app = new EmberApp(defaults, {
+    // Add options here
+    'ember-service-worker': {
+      registrationStrategy: 'async',
+      registrationDistPath: 'assets'
+    },
+  });
+```
 
-### Building
+#### Slide 4
 
-* `ember build` (development)
-* `ember build --environment production` (production)
+That's all, thank you for coming to my talk!
 
-### Deploying
+#### Slide 5
 
-Specify what it takes to deploy your app.
+![Is it tho?](https://media.tenor.com/images/b445b5ed4d22e96a36bd74b23f3f0c39/tenor.png)
 
-## Further Reading / Useful Links
+#### Slide 6
 
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+If your page is static that is probably all you need, but chances are that if you are building your
+app with Ember it will not be so simple as that. You will probably need load data from some API,
+allow users to create stuff, and update stuff. Caching assets for offline use is interesting, but
+managing data while offline is the real deal that distinguishes a true offline-first app from the rest.
+
+#### Slice 7
+
+**Disclaimer:**
+
+Offline-first is not only the cool name of a library you can just drop into your existing app and everything will work. It
+is a way of conceiving your app that will likely influence the entire design an engineering of your app.
+
+> Offline-first, like accessibility or testing, is better handled as an overarching facet of every feature. Adding
+tests for existing features is always harder than writing them along with the features, and the same applies for
+offline data managing.
