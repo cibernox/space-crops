@@ -1,0 +1,5 @@
+<select {{on "change" (action @onChange value="target.value")}}>
+  {{#each @options as |opt|}}
+    <option value={{opt}} selected={{eq opt @selected}}>{{opt}}</option>
+  {{/each}}
+</select>

@@ -14,9 +14,9 @@ export default class extends Component {
   handleKeydown(e) {
     if (e.keyCode === 13) {
       this.args.onChange(e.target.value);
-      this.isActive = !this.isActive;
+      this.toggleState();
     } else if (e.keyCode === 27) {
-      this.isActive = !this.isActive;
+      this.toggleState();
     }
   }
 

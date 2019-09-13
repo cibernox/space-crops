@@ -1,6 +1,5 @@
 {{#if this.isActive}}
   <input
-    type="text"
     class="input -mb-2"
     value={{@value}}
     {{did-insert this.focus}}
@@ -8,5 +7,11 @@
     {{on "blur" this.toggleState}}
     ...attributes>
 {{else}}
-  <span {{on "click" this.toggleState}}>{{@value}}</span>
+  <span {{on "click" this.toggleState}}>
+    {{#if hasBlock}}
+      {{yield}}
+    {{else}}
+      {{@value}}
+    {{/if}}
+  </span>
 {{/if}}

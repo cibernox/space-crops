@@ -15,13 +15,13 @@
         {{crop.name}}
       </td>
       <td class="font-mono">
-        {{crop.avgHeight}}cm
+        <ToggleInput type="number" @value={{crop.avgHeight}} @onChange={{fn this.updateAttr crop "avgHeight"}}>{{crop.avgHeight}}cm</ToggleInput>
       </td>
       <td class="font-mono">
-        <ToggleTextInput @value={{crop.health}} @onChange={{fn this.updateAttr crop "health"}} />
+        <ToggleSelect @options={{this.healthValues}} @selected={{crop.health}} @onChange={{fn this.updateAttr crop "health"}} />
       </td>
       <td class="font-mono">
-        {{crop.foodProduction}}g/day
+        <ToggleInput type="number" @value={{crop.foodProduction}} @onChange={{fn this.updateAttr crop "foodProduction"}}>{{crop.foodProduction}}g/day</ToggleInput>
       </td>
       <td><button class="btn btn-blue">Cares</button></td>
     </tr>
