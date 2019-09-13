@@ -1,8 +1,8 @@
-import JSONAPISource from '@orbit/jsonapi';
+import SourceClass from '@orbit/jsonapi';
 
 export default {
   create(injections = {}) {
     injections.name = 'remote';
-    return new JSONAPISource(injections);
+    return new SourceClass(injections);
   }
 };

@@ -14,8 +14,6 @@ export default class extends Route {
   }
 
   async _bootOrbit() {
-    let coordinator = this.dataCoordinator;
-    // let remote = coordinator.getSource('remote');
-    return coordinator.activate();
+    return this.dataCoordinator.activate();
   }
 }

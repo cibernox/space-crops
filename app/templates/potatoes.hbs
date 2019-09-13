@@ -35,11 +35,6 @@
   </tbody>
 </table> --}}
 
-{{#each this.model as |cropSample|}}
-  {{cropSample.name}}
-{{else}}
-  No data!
-{{/each}}
 <table class="w-full text-left table-collapse">
   <thead>
     <tr>
@@ -51,26 +46,22 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td class="font-mono">Lettuce 1</td>
-      <td class="font-mono">22cm</td>
-      <td class="font-mono">Great</td>
-      <td class="font-mono">40g/day</td>
-      <td><button class="btn btn-blue">Cares</button></td>
-    </tr>
-    <tr>
-      <td class="font-mono">Lettuce 1</td>
-      <td class="font-mono">22cm</td>
-      <td class="font-mono">Great</td>
-      <td class="font-mono">40g/day</td>
-      <td><button class="btn btn-blue">Cares</button></td>
-    </tr>
-    <tr>
-      <td class="font-mono">Lettuce 1</td>
-      <td class="font-mono">22cm</td>
-      <td class="font-mono">Great</td>
-      <td class="font-mono">40g/day</td>
-      <td><button class="btn btn-blue">Cares</button></td>
-    </tr>
+    {{#each this.model as |cropSample|}}
+      <tr>
+        <td class="font-mono">
+          {{cropSample.name}}
+        </td>
+        <td class="font-mono">
+          {{cropSample.avgHeight}}cm
+        </td>
+        <td class="font-mono">
+          <ToggleTextInput @value={{cropSample.health}}/>
+        </td>
+        <td class="font-mono">
+          {{cropSample.foodProduction}}g/day
+        </td>
+        <td><button class="btn btn-blue">Cares</button></td>
+      </tr>
+    {{/each}}
   </tbody>
 </table>

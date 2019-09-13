@@ -1,4 +1,4 @@
-import { Model, attr, belongsTo } from 'ember-orbit';
+import { Model, attr } from 'ember-orbit';
 
 export default Model.extend({
   cropType: attr('string'),
@@ -8,5 +8,4 @@ export default Model.extend({
   foodProduction: attr('number'),
 
   // Relationships
-  careInstructions: belongsTo('careInstructions'),
 });
