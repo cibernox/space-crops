@@ -1,0 +1,30 @@
+<table class="w-full text-left table-collapse table-fixed">
+  <thead>
+    <tr>
+      <th>Sample ID</th>
+      <th>Avg. height</th>
+      <th>Leaves health</th>
+      <th>Food production</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @crops as |crop|}}
+    <tr>
+      <td class="font-mono">
+        {{crop.name}}
+      </td>
+      <td class="font-mono">
+        {{crop.avgHeight}}cm
+      </td>
+      <td class="font-mono">
+        <ToggleTextInput @value={{crop.health}} @onChange={{fn this.updateAttr crop "health"}} />
+      </td>
+      <td class="font-mono">
+        {{crop.foodProduction}}g/day
+      </td>
+      <td><button class="btn btn-blue">Cares</button></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

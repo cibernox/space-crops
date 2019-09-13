@@ -35,33 +35,4 @@
   </tbody>
 </table> --}}
 
-<table class="w-full text-left table-collapse">
-  <thead>
-    <tr>
-      <th>Sample ID</th>
-      <th>Avg. height</th>
-      <th>Leaves health</th>
-      <th>Food production</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each this.model as |cropSample|}}
-      <tr>
-        <td class="font-mono">
-          {{cropSample.name}}
-        </td>
-        <td class="font-mono">
-          {{cropSample.avgHeight}}cm
-        </td>
-        <td class="font-mono">
-          <ToggleTextInput @value={{cropSample.health}}/>
-        </td>
-        <td class="font-mono">
-          {{cropSample.foodProduction}}g/day
-        </td>
-        <td><button class="btn btn-blue">Cares</button></td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+<CropsTable @crops={{this.model}}/>

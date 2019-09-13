@@ -1,10 +1,12 @@
 {{#if this.isActive}}
   <input
     type="text"
-    class="input"
+    class="input -mb-2"
     value={{@value}}
     {{did-insert this.focus}}
-    {{on "blur" this.toggleState}} ...attributes>
+    {{on "keydown" this.handleKeydown}}
+    {{on "blur" this.toggleState}}
+    ...attributes>
 {{else}}
   <span {{on "click" this.toggleState}}>{{@value}}</span>
 {{/if}}

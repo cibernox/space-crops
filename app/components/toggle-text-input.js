@@ -10,6 +10,16 @@ export default class extends Component {
     this.isActive = !this.isActive;
   }
 
+  @action
+  handleKeydown(e) {
+    if (e.keyCode === 13) {
+      this.args.onChange(e.target.value);
+      this.isActive = !this.isActive;
+    } else if (e.keyCode === 27) {
+      this.isActive = !this.isActive;
+    }
+  }
+
   focus(el) {
     el.focus();
   }
