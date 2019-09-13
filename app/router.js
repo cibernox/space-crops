@@ -9,7 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('potatoes');
   this.route('tomatoes');
-  this.route('lettuce');
+  this.route('beans');
 });
 
 export default Router;

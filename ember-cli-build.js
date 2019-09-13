@@ -17,6 +17,13 @@ const purgeCSS = {
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
+    orbit: {
+      packages: [
+        '@orbit/jsonapi',
+        '@orbit/indexeddb',
+        '@orbit/indexeddb-bucket'
+      ]
+    },
     postcssOptions: {
       compile: {
         plugins: [
