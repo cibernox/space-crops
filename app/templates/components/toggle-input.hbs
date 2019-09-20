@@ -7,7 +7,7 @@
     {{on "blur" this.toggleState}}
     ...attributes>
 {{else}}
-  <span {{on "click" this.toggleState}}>
+  <span tabindex="0" {{on "click" this.toggleState}} {{on "focus" this.toggleState}}>
     {{#if hasBlock}}
       {{yield}}
     {{else}}
