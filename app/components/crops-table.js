@@ -22,6 +22,15 @@ export default class extends Component {
   }
 
   @action
+  async createCrop() {
+    this.store.addRecord({
+      type: 'crop',
+      cropType: this.args.cropType,
+      name: `${this.args.cropType} ${this.args.crops.length + 1}`
+    });
+  }
+
+  @action
   async showCares(crop) {
     this.cropCare = await this.store.query(q => q.findRelatedRecord(crop, 'cropCare'));
   }

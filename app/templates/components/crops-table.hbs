@@ -24,11 +24,22 @@
           <ToggleInput type="number" @value={{crop.foodProduction}} @onChange={{fn this.updateAttr crop "foodProduction"}}>{{crop.foodProduction}}g/day</ToggleInput>
         </td>
         <td>
-          <button class="btn btn-blue" {{on "click" (fn this.showCares crop)}}>Cares</button>
+          <div class="flex justify-end">
+            <button class="btn btn-blue" {{on "click" (fn this.showCares crop)}}>Cares</button>
+          </div>
         </td>
       </tr>
     {{/each}}
   </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="5">
+        <div class="flex justify-end">
+          <button class="btn btn-blue" {{on "click" this.createCrop}}>Add new crop</button>
+        </div>
+      </td>
+    </tr>
+  </tfoot>
 </table>
 {{#if this.cropCare}}
   <Modal @onClose={{fn (mut this.cropCare) undefined}} as |m|>
