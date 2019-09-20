@@ -34,11 +34,18 @@
   <Modal @onClose={{fn (mut this.cropCare) undefined}} as |m|>
     <m.Title>Some title</m.Title>
     <m.Content>
-      <p>akjdhajda</p>
-      <p>akjdhajda</p>
-      <p>akjdhajda</p>
-      <p>akjdhajda</p>
-      <p>akjdhajda</p>
+      <div class="mb-4">
+        <span class="block text-gray-700 text-sm font-bold mb-2">Water</span>
+        <span>{{this.cropCare.water}}ml/day</span>
+      </div>
+      <div class="mb-4">
+        <span class="block text-gray-700 text-sm font-bold mb-2">Light</span>
+        <span>{{this.cropCare.light}}%</span>
+      </div>
+      <div class="mb-4">
+        <span class="block text-gray-700 text-sm font-bold mb-2">Fertilizer</span>
+        <span>{{this.cropCare.fertilizerType}} / {{this.cropCare.fertilizerAmount}}ml</span>
+      </div>
     </m.Content>
     <m.Footer/>
   </Modal>
