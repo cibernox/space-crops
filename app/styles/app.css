@@ -14,3 +14,7 @@
     transition: all .2s ease !important;
   }
 }
+
+.modal {
+  transition: opacity 0.25s ease;
+}

@@ -1,11 +1,11 @@
-import { Model, attr } from 'ember-orbit';
+import { Model, attr, belongsTo } from 'ember-orbit';
 
 export default Model.extend({
-  watering: attr('number'),
+  water: attr('number'),
   light: attr('number'),
   fertilizerType: attr('string'),
   fertilizerAmount: attr('number'),
 
   // Relationships
-  // cropSample: belongsTo('crop'),
+  crop: belongsTo('crop'),
 });

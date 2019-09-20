@@ -10,21 +10,36 @@
   </thead>
   <tbody>
     {{#each @crops as |crop|}}
-    <tr>
-      <td class="font-mono">
-        {{crop.name}}
-      </td>
-      <td class="font-mono">
-        <ToggleInput type="number" @value={{crop.avgHeight}} @onChange={{fn this.updateAttr crop "avgHeight"}}>{{crop.avgHeight}}cm</ToggleInput>
-      </td>
-      <td class="font-mono">
-        <ToggleSelect @options={{this.healthValues}} @selected={{crop.health}} @onChange={{fn this.updateAttr crop "health"}} />
-      </td>
-      <td class="font-mono">
-        <ToggleInput type="number" @value={{crop.foodProduction}} @onChange={{fn this.updateAttr crop "foodProduction"}}>{{crop.foodProduction}}g/day</ToggleInput>
-      </td>
-      <td><button class="btn btn-blue">Cares</button></td>
-    </tr>
+      <tr>
+        <td class="font-mono">
+          {{crop.name}}
+        </td>
+        <td class="font-mono">
+          <ToggleInput type="number" @value={{crop.avgHeight}} @onChange={{fn this.updateAttr crop "avgHeight"}}>{{crop.avgHeight}}cm</ToggleInput>
+        </td>
+        <td class="font-mono">
+          <ToggleSelect @options={{this.healthValues}} @selected={{crop.health}} @onChange={{fn this.updateAttr crop "health"}} />
+        </td>
+        <td class="font-mono">
+          <ToggleInput type="number" @value={{crop.foodProduction}} @onChange={{fn this.updateAttr crop "foodProduction"}}>{{crop.foodProduction}}g/day</ToggleInput>
+        </td>
+        <td>
+          <button class="btn btn-blue" {{on "click" (fn this.showCares crop)}}>Cares</button>
+        </td>
+      </tr>
     {{/each}}
   </tbody>
 </table>
+{{#if this.cropCare}}
+  <Modal @onClose={{fn (mut this.cropCare) undefined}} as |m|>
+    <m.Title>Some title</m.Title>
+    <m.Content>
+      <p>akjdhajda</p>
+      <p>akjdhajda</p>
+      <p>akjdhajda</p>
+      <p>akjdhajda</p>
+      <p>akjdhajda</p>
+    </m.Content>
+    <m.Footer/>
+  </Modal>
+{{/if}}
