@@ -43,6 +43,7 @@
     "ember-resolver": "^5.0.1",
     "ember-service-worker": "^0.8.0",
     "ember-service-worker-asset-cache": "^0.6.4",
+    "ember-service-worker-index": "^0.7.0",
     "ember-source": "~3.13.0",
     "ember-truth-helpers": "^2.1.0",
     "eslint-plugin-ember": "^6.2.0",
