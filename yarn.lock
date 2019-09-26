@@ -1022,6 +1022,13 @@
   dependencies:
     "@orbit/utils" "^0.16.1"
 
+"@orbit/core@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/core/-/core-0.16.3.tgz#e172c28279cf8bd875957cb71317970aaa98aeb2"
+  integrity sha512-E4g4twgp8eg6440w3Mjc4+xP+SnyHx2UaDvxLrWx0rV579/jy7zxx98vQxW//lTuU/AXEycKZ3FVzrRDRN/3Cw==
+  dependencies:
+    "@orbit/utils" "^0.16.3"
+
 "@orbit/data@^0.16.1":
   version "0.16.1"
   resolved "https://registry.yarnpkg.com/@orbit/data/-/data-0.16.1.tgz#a4f5945ff9345f9ef0390ee536d72bfbfb219dde"
@@ -1029,6 +1036,14 @@
   dependencies:
     "@orbit/core" "^0.16.1"
     "@orbit/utils" "^0.16.1"
+
+"@orbit/data@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/data/-/data-0.16.3.tgz#c4bebb3d3be313538cd3c5630fa7ff7aadff804d"
+  integrity sha512-e3DyYqpULl4W7QGXr3/SvHVb95byQT1P2gcyBLZpFlMawhxIiT2E1qSWAmutkrK7d7NfKEk9xBlnEcMnIlpc6A==
+  dependencies:
+    "@orbit/core" "^0.16.3"
+    "@orbit/utils" "^0.16.3"
 
 "@orbit/identity-map@^0.16.1":
   version "0.16.1"
@@ -1040,15 +1055,33 @@
   resolved "https://registry.yarnpkg.com/@orbit/immutable/-/immutable-0.16.1.tgz#888458cd99d62704701cf685e059bebaa38837c4"
   integrity sha512-IqwhSM2VRcg1FIZI+8oTvsjk6FKDGo5v54dNpqBb9Gr1mhpcPdjFbroiwnFWTEiNqyd7vUvWhqEul4UNUTJ3Kw==
 
-"@orbit/jsonapi@^0.16.1":
-  version "0.16.1"
-  resolved "https://registry.yarnpkg.com/@orbit/jsonapi/-/jsonapi-0.16.1.tgz#f2fc6dae0be00ca6f1e5052554cc52772b70830a"
-  integrity sha512-BWwAc0Ma/O+Z4PZv2MXLSV8brj7U9uPfC0GPiMSdVYizTx6eHqwldO8qDYiXvivnLIR7eiZ+8faVVk1a0qlNew==
+"@orbit/indexeddb-bucket@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/indexeddb-bucket/-/indexeddb-bucket-0.16.3.tgz#bb132c2ddf32a89f9ba968241464ee43fd6d67d5"
+  integrity sha512-wzl+fKqVc438PGsXBauosEsJ01TVuf8Xeu/0YrNwZoED/SkoebszjCEOCJ4rmPRBkuXwCPULowYUOmfQqtiqLQ==
   dependencies:
-    "@orbit/core" "^0.16.1"
-    "@orbit/data" "^0.16.1"
-    "@orbit/serializers" "^0.16.1"
-    "@orbit/utils" "^0.16.1"
+    "@orbit/core" "^0.16.3"
+    "@orbit/utils" "^0.16.3"
+
+"@orbit/indexeddb@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/indexeddb/-/indexeddb-0.16.3.tgz#dfaecf12eaec00ab21b35d16514287582ed42e4e"
+  integrity sha512-f3pvAT96coE6NJhiRrU/24//hDAFiHo/R6YDv2EEjrxWBCDInhSmECHCaYcLX31qF/Lskmp0zLqw4uHV6BiRcQ==
+  dependencies:
+    "@orbit/core" "^0.16.3"
+    "@orbit/data" "^0.16.3"
+    "@orbit/record-cache" "^0.16.3"
+    "@orbit/utils" "^0.16.3"
+
+"@orbit/jsonapi@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/jsonapi/-/jsonapi-0.16.3.tgz#82e4f5bc168a1d4418d7ae20769e868d666a80bf"
+  integrity sha512-O3VY1WwFy1xDdbI72HY+Ofb3VpiRxjYJIk923eul/fww23UnwbVYNkHuxdAXVvj2giELJOxlgOX+QmoxR24IXg==
+  dependencies:
+    "@orbit/core" "^0.16.3"
+    "@orbit/data" "^0.16.3"
+    "@orbit/serializers" "^0.16.3"
+    "@orbit/utils" "^0.16.3"
 
 "@orbit/memory@^0.16.1":
   version "0.16.1"
@@ -1070,15 +1103,29 @@
     "@orbit/data" "^0.16.1"
     "@orbit/utils" "^0.16.1"
 
-"@orbit/serializers@^0.16.1":
-  version "0.16.1"
-  resolved "https://registry.yarnpkg.com/@orbit/serializers/-/serializers-0.16.1.tgz#fc8bb0d4f897d6703029295d84dd04cd9630b134"
-  integrity sha512-6JzpaMOrayYfI/6Nki9oqsbLl6cvpqZT9MJuP5Nm7Xr2G/n4Ns9g+A0JeRm/Nm5S0g9cneO9CRxYN/sRXcfhQw==
+"@orbit/record-cache@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/record-cache/-/record-cache-0.16.3.tgz#fe3c42d96efec3e978e8ef3007b46d84b94f6466"
+  integrity sha512-uc5F9GqhrUo8VGuVfjC1TPnbnp9vpozRGFf0M7iqyFn9Xe7e71dgZZeFjhvoL8+2qyB/2j0yCYR6bcUEGTwMmQ==
+  dependencies:
+    "@orbit/core" "^0.16.3"
+    "@orbit/data" "^0.16.3"
+    "@orbit/utils" "^0.16.3"
+
+"@orbit/serializers@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/serializers/-/serializers-0.16.3.tgz#fce96a2b0d65f86086c473f1c1d19bfccb9235bd"
+  integrity sha512-PC5KKi76pqT7apCK3SuAkvO7MZX3McaITp2cY1IvFp88NpnqUyRvmkP/OqdeTmMD0v9LUT0m+ZAGHh6eCj9ZnQ==
 
 "@orbit/utils@^0.16.1":
   version "0.16.1"
   resolved "https://registry.yarnpkg.com/@orbit/utils/-/utils-0.16.1.tgz#62a14d03768142b2f9983a830bf6216165d23f6f"
   integrity sha512-7iSVdf+EoQruEMAwH+5341yehXNG3lU5ucs/mojkKjz8HZ6YqgdToXLq/L/q1iX64pVqOhUZE2CJsg1d++vSvw==
+
+"@orbit/utils@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/utils/-/utils-0.16.3.tgz#fa94700191360c4c49fc9fdf464994cfe817dd0b"
+  integrity sha512-JSF9xVRUEWugGtcR9mFOCzsMLphWMh/8xAe0FOuEpyyBFxBlWLuovatg/cwvlHo7AJh3J5StiiJXmBecTk/m6A==
 
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"

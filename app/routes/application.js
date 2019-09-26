@@ -6,14 +6,16 @@ export default class extends Route {
 
   async beforeModel() {
     await this._bootOrbit();
-    // return this.store.liveQuery(q => {
-    //   return q.findRecords('crop-sample')
-    //     .filter({ attribute: 'cropType', value: 'potatoes' })
-    //     .sort('name');
-    // });
   }
 
   async _bootOrbit() {
-    return this.dataCoordinator.activate();
+    // If a backup source is present, populate the store from backup prior to activating the coordinator
+    const backup = this.dataCoordinator.getSource("backup");
+    if (backup) {
+      const transform = await backup.pull(q => q.findRecords());
+      await this.store.sync(transform);
+    }
+
+    await this.dataCoordinator.activate();
   }
 }

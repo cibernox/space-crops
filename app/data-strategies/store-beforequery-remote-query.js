@@ -3,7 +3,7 @@ import { RequestStrategy } from '@orbit/coordinator';
 export default {
   create() {
     return new RequestStrategy({
-      name: 'store-beforeupdate-remote-update',
+      name: 'store-beforequery-remote-query',
 
       /**
        * The name of the source to be observed.
@@ -14,7 +14,7 @@ export default {
        * The name of the event to observe (e.g. `beforeQuery`, `query`,
        * `beforeUpdate`, `update`, etc.).
        */
-      on: 'beforeUpdate',
+      on: 'beforeQuery',
 
       /**
        * The name of the source which will be acted upon.
@@ -28,7 +28,7 @@ export default {
        * invoked in the context of this strategy (and thus will have access to
        * both `this.source` and `this.target`).
        */
-      action: 'update',
+      action: 'query',
 
       /**
        * A handler for any errors thrown as a result of performing the action.
