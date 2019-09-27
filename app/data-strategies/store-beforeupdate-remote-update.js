@@ -33,7 +33,9 @@ export default {
       /**
        * A handler for any errors thrown as a result of performing the action.
        */
-      // catch(e) {},
+      catch(/*e*/) {
+        this.target.requestQueue.skip(); // if creating/updating a record fails, ignore it and carry on (not ideal: Improve)
+      },
 
       /**
        * A filter function that returns `true` if the `action` should be performed.
