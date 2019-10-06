@@ -69,6 +69,9 @@ export default {
        * both `this.source` and `this.target`).
        */
       blocking: false
+      // blocking(query) {
+      //   return (query.options || {}).blocking || false;
+      // }
     });
   }
 };
