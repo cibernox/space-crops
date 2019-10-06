@@ -20,8 +20,6 @@
   "devDependencies": {
     "@ember/optional-features": "^1.0.0",
     "@fullhuman/postcss-purgecss": "^1.2.0",
-    "@orbit/indexeddb": "^0.16.3",
-    "@orbit/indexeddb-bucket": "^0.16.3",
     "babel-eslint": "^10.0.2",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^1.5.2",
@@ -59,9 +57,7 @@
   },
   "dependencies": {
     "@ember/render-modifiers": "^1.0.1",
-    "@glimmer/component": "^0.14.0-alpha.13",
-    "@orbit/identity-map": "^0.16.1",
-    "@orbit/jsonapi": "^0.16.3"
+    "@glimmer/component": "^0.14.0-alpha.13"
   },
   "engines": {
     "node": "8.* || >= 10.*"
