@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { capitalize } from '@ember/string';
-import { buildQuery } from '@orbit/data';
+// import { buildQuery } from '@orbit/data';
 
 export default class extends Component {
   @service store

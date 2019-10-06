@@ -15,7 +15,7 @@ Al principio todo es sincrono.
   - Cuando algo va mal todo se fastidia. Al añadir estrategia para manejar errores se arregla.
 
 
-### Slice 0
+### Slide 0
 
 Title & presentation
 
@@ -62,7 +62,7 @@ app with Ember it will not be so simple as that. You will probably need load dat
 allow users to create stuff, and update stuff. Caching assets for offline use is interesting, but
 managing data while offline is the real deal that distinguishes a true offline-first app from the rest.
 
-#### Slice 7
+#### Slide 7
 
 **Disclaimer:**
 
@@ -72,3 +72,9 @@ is a way of conceiving your app that will likely influence the entire design an 
 > Offline-first, like accessibility or testing, is better handled as an overarching facet of every feature. Adding
 tests for existing features is always harder than writing them along with the features, and the same applies for
 offline data managing.
+
+#### Slice 8
+
+Steps to convert convert an app that works in the browser to have an API.
+
+
