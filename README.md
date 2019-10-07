@@ -98,11 +98,16 @@ Steps:
 - `ember g data-bucket main`
 [Data is saved in both API and IDB, but synchronous]
 
-
 If the latency of a connection between London and Sydney, 17000km apart, is of around 250ms, we can expect the internet
 connection to the moon to have a latency of some good 5 o 6 seconds. That is without accounting for the speed.
 
-Imagine how it would feel for the astronauts to have to wait 6 seconds for every page load and for every interaction.
+Let's see how it feels waiting 6 seconds for every page load and interation. [Demo with Moon Latency]
+
+That's no good, so we have to make our strategies not blocking. So we save to indexedDB immediately and carry
+on working, trusting that things will eventually save on the server:
+
+`app/data-strategies/store-beforequery-remote-query.js` and `app/data-strategies/store-beforeupdate-remote-update.js` to make it non-blocking
+
 
 
 
