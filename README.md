@@ -96,6 +96,7 @@ Steps:
 - `ember g data-source backup --from=@orbit/indexeddb`
 - `ember g data-strategy store-backup-sync`
 - `ember g data-bucket main`
+[Data is saved in both API and IDB, but synchronous]
 
 
 If the latency of a connection between London and Sydney, 17000km apart, is of around 250ms, we can expect the internet
