@@ -108,6 +108,8 @@ on working, trusting that things will eventually save on the server:
 
 `app/data-strategies/store-beforequery-remote-query.js` and `app/data-strategies/store-beforeupdate-remote-update.js` to make it non-blocking
 
+That feels amazing right. Now astronauts will get snappy UI no matter with how high the latency is.
+
 
 
 
