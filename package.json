@@ -20,6 +20,7 @@
   "devDependencies": {
     "@ember/optional-features": "^1.0.0",
     "@fullhuman/postcss-purgecss": "^1.2.0",
+    "@orbit/jsonapi": "^0.16.3",
     "babel-eslint": "^10.0.2",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^1.5.2",

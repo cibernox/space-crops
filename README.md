@@ -75,6 +75,33 @@ offline data managing.
 
 #### Slice 8
 
-Steps to convert convert an app that works in the browser to have an API.
+Steps to convert an app that works in the browser to have an API.
+
+- `ember g data-source remote --from=@orbit/jsonapi`
+- `ember g data-strategy remote-store-sync`
+- `ember g data-strategy store-beforequery-remote-query` [Loading records works. Saving doesn't]
+[show `/data-sources/remote.js` and `/data-strategies/remote-store-sync.js`]
+- `ember g data-strategy store-beforeupdate-remote-update` [Saving works.]
+
+#### Slide 9
+
+So far we have a traditional app. Like the kind of app you'd usually build with ember-data that expects
+a working connection to be fast and reliable. But this application is going to run in a space station orbiting the moon,
+as far depending on the time of the year as 400.000 km from earth.
+This can go wrong, so we need to be able to store information locally in the browser in case things go south.
+
+Lets add IndexedDB as a backup source for our app.
+
+Steps:
+- `ember g data-source backup --from=@orbit/indexeddb`
+- `ember g data-strategy store-backup-sync`
+- `ember g data-bucket main`
+
+
+If the latency of a connection between London and Sydney, 17000km apart, is of around 250ms, we can expect the internet
+connection to the moon to have a latency of some good 5 o 6 seconds. That is without accounting for the speed.
+
+Imagine how it would feel for the astronauts to have to wait 6 seconds for every page load and for every interaction.
+
 
 
