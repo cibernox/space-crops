@@ -20,7 +20,7 @@ export default class extends Component {
 
   @action
   updateAttr(crop, attrName, value) {
-    this.store.update(t => t.replaceAttribute(crop.identity, attrName, value));
+    this.store.update(t => t.replaceAttribute(crop.identity, attrName, value), { sources: { remote: { timeout: 10000 } } });
   }
 
   @action
@@ -29,12 +29,12 @@ export default class extends Component {
       type: 'crop',
       cropType: this.args.cropType,
       name: `${capitalize(this.args.cropType)} ${this.args.crops.length + 1}`
-    });
+    }, { sources: { remote: { timeout: 10000 } } });
   }
 
   @action
   async removeCrop(crop) {
-    this.store.removeRecord(crop);
+    this.store.removeRecord(crop, { sources: { remote: { timeout: 10000 } } });
   }
 
   @action
