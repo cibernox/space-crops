@@ -110,6 +110,43 @@ on working, trusting that things will eventually save on the server:
 
 That feels amazing right. Now astronauts will get snappy UI no matter with how high the latency is.
 
+#### Slide 10
+
+And this is all great. The internet is slow, but the app feels fast. Our job here is done, right?
+
+#### Slice 11
+
+Not exactly. This kind of pattern were we save something and we don't wait to see if it succeeds or not is called Optimistic.
+
+We all know what happens to overly optimistic people, right?
+
+![Epic fail](https://media.giphy.com/media/12WjSnRGVC79EA/giphy.gif)
+
+#### Slide 11
+
+Because if this space station is orbiting the moon, there is an interesting fact about the moon.
+No matter at what point of its orbit around the earth it is, the same side is facing us. The other side that we never see from earth is the well know "Dark side of the moon".
+
+When the space station is orbiting on the dark side of the moon, and assuming our station is orbiting in the Low lunar orbit (LLO), it doesn't have direct line of sight with earth for approximately 50 minutes every 2 hours.
+
+We clearly cannot tell the astronauts to not use the app for those 50 minutes, so we need to have a way of gracefully handle errors.
+
+#### Slide 12
+
+Orbit has no opinions about how to handle errors, it's up to you to check the kind of request error and act accordingly.
+
+Let's start with the basic, an error loading data:
+
+[Run server with `ERROR_MODE=1 rails s`. The first request fails and no subsequent requests are made]
+
+Why is that? That is because an error happened and we didn't handle it. Since orbit each source only handlers one request at a time, and this one didn't succeed, subsequent requests are never processed.
+
+For querys like this one it's fairly simple. If we make a request and it fails because we're offline or the server is on maintenance, bad luck, but we can still continue to work with the data we already cached in indexedDB, so we can just skip the failed task and carry on.
+
+[Go to `app/data-strategies/store-beforequery-remote-query.js` and add `this.target.requestQueue.skip();`] Now failing request do not prevent future requests from running
+
+
+
 
 
 
