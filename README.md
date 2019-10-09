@@ -146,14 +146,49 @@ For querys like this one it's fairly simple. If we make a request and it fails b
 Run:
 - `ember g data-strategy remote-queryfail`
 
-[Go edit `app/data-strategies/remote-queryfail.js`, remote the `target` as we don't need it and add `this.source.requestQueue.skip()` to the action]
-<!-- [Go to `app/data-strategies/store-beforequery-remote-query.js` and add `this.target.requestQueue.skip();`] Now failing request do not prevent future requests from running -->
+[Go edit `app/data-strategies/remote-queryfail.js`, remote the `target` as we don't need it and add `this.source.requestQueue.skip()` to the action] Now failing request do not prevent future requests from running
 
 #### Slide 13
 
 Failures saving data are a bit more nuanced really, because depending on the **reason** for the failure, we probably want to handle it differently. Lets handle the kind of errors the app will get when there's no internet.
 
-When we
+Run:
+- `ember g data-strategy remote-updatefail`
+- add `import { NetworkError } from "@orbit/data";`
+- The remove the `target` and in the action put something like this
+```js
+action(transform, e) {
+  const remote = this.source;
+  const store = this.coordinator.getSource("store");
+
+  if (e instanceof NetworkError) {
+    // When network errors are encountered, try again in 3s
+    console.log("NetworkError - will try again soon");
+    // setTimeout(() => {
+    //   remote.requestQueue.retry();
+    // }, 3000);
+  } else {
+    alert('The error rejected the request');
+
+    // // When non-network errors occur, notify the user and
+    // // reset state.
+    // let label = transform.options && transform.options.label;
+    // if (label) {
+    //   alert(`Unable to complete "${label}"`);
+    // } else {
+    //   alert(`Unable to complete operation`);
+    // }
+
+    // // Roll back store to position before transform
+    // if (store.transformLog.contains(transform.id)) {
+    //   console.log("Rolling back - transform:", transform.id);
+    //   store.rollback(transform.id, -1);
+    // }
+
+    return remote.requestQueue.skip();
+  }
+}
+```
 
 
 
