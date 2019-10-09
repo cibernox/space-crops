@@ -8,8 +8,6 @@ export default {
       on: 'updateFail',
       action(transform, e) {
         const remote = this.source;
-        debugger
-        // if (e instanceof NetworkError) {
         if (e.message.startsWith('Network error')) {
           console.log("The server never received the request");
         } else {

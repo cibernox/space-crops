@@ -1,8 +1,10 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
+// import { getOwner } from '@ember/application';
 
 export default class extends Route {
   @service dataCoordinator
+  @service network
 
   async beforeModel() {
     await this._bootOrbit();
@@ -17,5 +19,15 @@ export default class extends Route {
     }
 
     await this.dataCoordinator.activate();
+    // this._retryWhenBackOnline();
+  }
+
+  _retryWhenBackOnline() {
+    this.network.onChange(onLine => {
+      if (onLine) {
+        let remote = getOwner(this).lookup('data-source:remote');
+        remote.requestQueue.retry();
+      }
+    });
   }
 }

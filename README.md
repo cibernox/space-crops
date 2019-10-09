@@ -159,34 +159,31 @@ Run:
 ```js
 action(transform, e) {
   const remote = this.source;
-  const store = this.coordinator.getSource("store");
-
   if (e instanceof NetworkError) {
-    // When network errors are encountered, try again in 3s
-    console.log("NetworkError - will try again soon");
-    // setTimeout(() => {
-    //   remote.requestQueue.retry();
-    // }, 3000);
+    alert('The server rejected the request');
   } else {
-    alert('The error rejected the request');
-
-    // // When non-network errors occur, notify the user and
-    // // reset state.
-    // let label = transform.options && transform.options.label;
-    // if (label) {
-    //   alert(`Unable to complete "${label}"`);
-    // } else {
-    //   alert(`Unable to complete operation`);
-    // }
-
-    // // Roll back store to position before transform
-    // if (store.transformLog.contains(transform.id)) {
-    //   console.log("Rolling back - transform:", transform.id);
-    //   store.rollback(transform.id, -1);
-    // }
-
+    alert('The server rejected the request');
     return remote.requestQueue.skip();
   }
+}
+```
+
+Now if the server responds with an error, we just skip that operation, but if it was for a network error the operation remains in the queue to be processed later.
+
+#### Slide 14
+
+If we go back online and reload the page, we can see how that operation is retried and succeeds. From now on we can decide that this is enough or try to be smarter. This is how
+you would monitor the network status and retry when we recover connectivity.
+
+- Show `/services/network.js` and go through the code
+- Go to the `routes/application.js` and uncomment or type retry code.
+```js
+_retryWhenBackOnline() {
+  this.network.onChange(onLine => {
+    if (!onLine) return;
+    let remote = getOwner(this).lookup('data-source:remote');
+    remote.requestQueue.retry();
+  });
 }
 ```
 

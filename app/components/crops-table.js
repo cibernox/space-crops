@@ -48,6 +48,5 @@ export default class extends Component {
     this.cropCare = await this.store.liveQuery(q => {
       return q.findRelatedRecord({ id, type }, 'cropCare')
     });
-    // debugger;
   }
 }
