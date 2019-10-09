@@ -143,8 +143,17 @@ Why is that? That is because an error happened and we didn't handle it. Since or
 
 For querys like this one it's fairly simple. If we make a request and it fails because we're offline or the server is on maintenance, bad luck, but we can still continue to work with the data we already cached in indexedDB, so we can just skip the failed task and carry on.
 
-[Go to `app/data-strategies/store-beforequery-remote-query.js` and add `this.target.requestQueue.skip();`] Now failing request do not prevent future requests from running
+Run:
+- `ember g data-strategy remote-queryfail`
 
+[Go edit `app/data-strategies/remote-queryfail.js`, remote the `target` as we don't need it and add `this.source.requestQueue.skip()` to the action]
+<!-- [Go to `app/data-strategies/store-beforequery-remote-query.js` and add `this.target.requestQueue.skip();`] Now failing request do not prevent future requests from running -->
+
+#### Slide 13
+
+Failures saving data are a bit more nuanced really, because depending on the **reason** for the failure, we probably want to handle it differently. Lets handle the kind of errors the app will get when there's no internet.
+
+When we
 
 
 

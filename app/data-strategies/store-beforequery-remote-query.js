@@ -33,9 +33,8 @@ export default {
       /**
        * A handler for any errors thrown as a result of performing the action.
        */
-      catch(e) {
-        this.target.requestQueue.skip();
-      },
+      // catch(e) {
+      // },
 
       /**
        * A filter function that returns `true` if the `action` should be performed.
