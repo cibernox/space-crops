@@ -6,6 +6,6 @@ export default class extends Route {
       return q.findRecords('crop')
         .filter({ attribute: 'cropType', value: 'potatoes' })
         .sort('name');
-    }, { sources: { remote: { timeout: 10000 } } });
+    });
   }
 }

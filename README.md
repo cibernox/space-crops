@@ -66,8 +66,7 @@ managing data while offline is the real deal that distinguishes a true offline-f
 
 **Disclaimer:**
 
-Offline-first is not only the cool name of a library you can just drop into your existing app and everything will work. It
-is a way of conceiving your app that will likely influence the entire design an engineering of your app.
+Offline-first is not only the cool name of a library you can just drop into your existing app and everything will work. It is a way of conceiving your app that will likely influence the entire design an engineering of your app.
 
 > Offline-first, like accessibility or testing, is better handled as an overarching facet of every feature. Adding
 tests for existing features is always harder than writing them along with the features, and the same applies for
@@ -102,8 +101,9 @@ If the latency of a connection between London and Sydney, 17000km apart, is of a
 connection to the moon to have a latency of some good 5 o 6 seconds. That is without accounting for the speed.
 
 Let's see how it feels waiting 6 seconds for every page load and interation. [Demo with Moon Latency]
+It fails because the it takes too long! The allow orbit to wait a bit more. Edit `remote.js` and add `injections.defaultFetchSettings = { timeout: 10000 }`.
 
-That's no good, so we have to make our strategies not blocking. So we save to indexedDB immediately and carry
+It works now, but it's pretty bad, right? We have to make our strategies not blocking. So we save to indexedDB immediately and carry
 on working, trusting that things will eventually save on the server:
 
 `app/data-strategies/store-beforequery-remote-query.js` and `app/data-strategies/store-beforeupdate-remote-update.js` to make it non-blocking
@@ -141,7 +141,7 @@ Let's start with the basic, an error loading data:
 
 Why is that? That is because an error happened and we didn't handle it. Since orbit each source only handlers one request at a time, and this one didn't succeed, subsequent requests are never processed.
 
-For querys like this one it's fairly simple. If we make a request and it fails because we're offline or the server is on maintenance, bad luck, but we can still continue to work with the data we already cached in indexedDB, so we can just skip the failed task and carry on.
+For queries like this one it's fairly simple. If we make a request and it fails because we're offline or the server is on maintenance, bad luck, but we can still continue to work with the data we already cached in indexedDB, so we can just skip the failed task and carry on.
 
 Run:
 - `ember g data-strategy remote-queryfail`
@@ -186,6 +186,18 @@ _retryWhenBackOnline() {
   });
 }
 ```
+
+Now when we recover connection all previously failed operations are retried.
+
+#### Slide 15
+
+More topics:
+
+- How to handle 403 errors -> Skip operation and alert the user
+- How to handle 422 errors -> Client side-validations. Json-schema validations
+- How to handle 500 errors -> Not sure
+- How to handle simultaneous edits -> Conflicts and return 412.
+- Optimistic UI patterns: Offline icons/banners.
 
 
 
