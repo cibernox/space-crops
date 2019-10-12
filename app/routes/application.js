@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-// import { getOwner } from '@ember/application';
+import { getOwner } from '@ember/application';
 
 export default class extends Route {
   @service dataCoordinator
