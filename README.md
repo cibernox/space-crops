@@ -106,7 +106,7 @@ It fails because the it takes too long! The allow orbit to wait a bit more. Edit
 It works now, but it's pretty bad, right? We have to make our strategies not blocking. So we save to indexedDB immediately and carry
 on working, trusting that things will eventually save on the server:
 
-`app/data-strategies/store-beforequery-remote-query.js` and `app/data-strategies/store-beforeupdate-remote-update.js` to make it non-blocking
+`app/data-strategies/store-beforequery-remote-query.js` and `app/data-strategies/store-beforeupdate-remote-update.js` to make it non-blocking. Restart the server.
 
 That feels amazing right. Now astronauts will get snappy UI no matter with how high the latency is.
 
