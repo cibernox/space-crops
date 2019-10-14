@@ -154,18 +154,16 @@ Failures saving data are a bit more nuanced really, because depending on the **r
 
 Run:
 - `ember g data-strategy remote-updatefail`
-- add `import { NetworkError } from "@orbit/data";`
 - The remove the `target` and in the action put something like this
 ```js
 action(transform, e) {
-  const remote = this.source;
-  if (e instanceof NetworkError) {
-    alert('The server rejected the request');
+  if (e.response) {
+    console.log('The server responded with an error');
   } else {
-    alert('The server rejected the request');
-    return remote.requestQueue.skip();
+    console.log('The request did not respond at all');
+    return this.source.requestQueue.skip();
   }
-}
+},
 ```
 
 Now if the server responds with an error, we just skip that operation, but if it was for a network error the operation remains in the queue to be processed later.
