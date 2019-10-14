@@ -139,14 +139,14 @@ Let's start with the basic, an error loading data:
 
 [Run server with `ERROR_MODE=1 rails s`. The first request fails and no subsequent requests are made]
 
-Why is that? That is because an error happened and we didn't handle it. Since orbit each source only handlers one request at a time, and this one didn't succeed, subsequent requests are never processed.
+Why is that? That is because an error happened and we didn't handle it. Since orbit each source only handles one request at a time, and this one didn't succeed, subsequent requests are never processed.
 
 For queries like this one it's fairly simple. If we make a request and it fails because we're offline or the server is on maintenance, bad luck, but we can still continue to work with the data we already cached in indexedDB, so we can just skip the failed task and carry on.
 
 Run:
 - `ember g data-strategy remote-queryfail`
 
-[Go edit `app/data-strategies/remote-queryfail.js`, remote the `target` as we don't need it and add `this.source.requestQueue.skip()` to the action] Now failing request do not prevent future requests from running
+[Go edit `app/data-strategies/remote-queryfail.js`, remove the `target` as we don't need it and add `this.source.requestQueue.skip()` to the action] Now failing request do not prevent future requests from running
 
 #### Slide 13
 
