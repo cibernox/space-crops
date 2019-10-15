@@ -28,7 +28,13 @@ export default class extends Component {
     this.store.addRecord({
       type: 'crop',
       cropType: this.args.cropType,
-      name: `${capitalize(this.args.cropType)} ${this.args.crops.length + 1}`
+      name: `${capitalize(this.args.cropType)} ${this.args.crops.length + 1}`,
+      cares: {
+        water: null,
+        fertilizerType: null,
+        fertilizerAmount: null,
+        light: null
+      }
     });
   }
 
@@ -38,15 +44,7 @@ export default class extends Component {
   }
 
   @action
-  async showCares({ id, type }) {
-    // debugger;
-    // const query = buildQuery(q => {
-    //   return q.findRelatedRecord({ id, type }, 'cropCare')
-    // }, undefined, undefined, this.store.source.queryBuilder);
-    // let result = await this.store.source.query(query);
-    // debugger;
-    this.cropCare = await this.store.liveQuery(q => {
-      return q.findRelatedRecord({ id, type }, 'cropCare')
-    });
+  async showCares({ cares }) {
+    this.cropCare = cares
   }
 }

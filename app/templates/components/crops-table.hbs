@@ -42,8 +42,8 @@
     </tr>
   </tfoot>
 </table>
-{{#if this.cropCare.content}}
-  <Modal @onClose={{fn (mut this.cropCare.content) undefined}} as |m|>
+{{#if this.cropCare}}
+  <Modal @onClose={{fn (mut this.cropCare) undefined}} as |m|>
     <m.Title>Some title</m.Title>
     <m.Content>
       <div class="mb-4">

@@ -1,4 +1,4 @@
-import { Model, attr, hasOne } from 'ember-orbit';
+import { Model, attr } from 'ember-orbit';
 
 export default Model.extend({
   cropType: attr('string'),
@@ -6,7 +6,5 @@ export default Model.extend({
   avgHeight: attr('number'),
   health: attr('string'),
   foodProduction: attr('number'),
-
-  // Relationships
-  cropCare: hasOne('cropCare')
+  cares: attr()
 });
